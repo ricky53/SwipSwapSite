@@ -1,101 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SwipSwap</title>
-  <meta name="description" content="SwipSwap – Trade what you have for what you want." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwipSwap - The dating app for your stuff</title>
   <style>
-    :root {
-      --bg: #ffffff;
-      --fg: #111827;
-      --muted: #6b7280;
-      --accent: #0ea5e9;
-    }
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--fg);
-      background: var(--bg);
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-      background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 100%);
-      border-bottom: 1px solid #e5e7eb;
-    }
-    header h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 3rem);
-    }
-    header p {
-      margin: .5rem 0 0;
-      color: var(--muted);
-      font-size: 1.1rem;
-    }
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    .cta {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.75rem 1.5rem;
-      background: var(--accent);
+      padding: 0;
+      background: #19a999;
       color: #fff;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s ease;
-    }
-    .cta:hover {
-      background: #0284c7;
-    }
-    footer {
       text-align: center;
-      padding: 2rem 1rem;
-      border-top: 1px solid #e5e7eb;
-      font-size: .9rem;
-      color: var(--muted);
     }
-    footer a {
-      color: var(--accent);
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .logo svg {
+  max-width: 250px;
+  fill: #fff;
+  height: auto;
+  margin-bottom: 1em;
+}
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
+      margin-bottom: 2em;
+      font-weight: 300;
+    }
+
+    .download-section {
+      margin-bottom: 2.5em;
+    }
+
+    .download-section h2 {
+      font-size: 1.3em;
+      margin-bottom: 1em;
+    }
+
+    .qr {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 1em;
+      background: #fff;
+      padding: 10px;
+      border-radius: 12px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: #fff;
+      color: #19a999;
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 8px;
       text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
     }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      margin: 0 .75rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
+
+    .download-btn:hover {
+      background: #e8fdf9;
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>SwipSwap</h1>
-    <p>Trade what you have for what you want.</p>
-  </header>
+  <div class="container">
+    <div class="logo">
+        <img src="icon.svg" alt="SwipSwap Logo" class="logo-img">
+      </div>
+    <p class="subtitle">The dating app for your stuff</p>
 
-  <main>
-    <p>
-      SwipSwap is the fun, hassle-free way to exchange items with people near you. 
-      Skip the headaches of marketplace spam — just swipe, match, and trade.
-    </p>
-    <a href="#" class="cta">Download the App</a>
+    <!-- Apple Section -->
+    <div class="download-section">
+      <h2>Apple Download</h2>
+      <img src="appleQR.png" alt="Apple QR Code" class="qr">
+      <br>
+      <a href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476" class="download-btn">Download on iOS</a>
+    </div>
 
-    <nav>
-      <a href="/SwipSwapPrivacyPolicy.html">Privacy &amp; Safety Policy</a>
-    </nav>
-  </main>
-
-  <footer>
-    <p>© 2025 SwipSwap. All rights reserved.</p>
-  </footer>
+    <!-- Android Section -->
+    <div class="download-section">
+      <h2>Android Download</h2>
+      <img src="androidQR.png" alt="Android QR Code" class="qr">
+      <br>
+      <a href="https://play.google.com/store/apps/details?id=com.ricky53.SwipSwap" class="download-btn">Download on Android</a>
+    </div>
+  </div>
 </body>
 </html>
