@@ -2,24 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>SwipSwap Beta Starts Sept 1</title>
+    <title>SwipSwap Beta Is Live</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      /* Basic resets for some clients */
       img { border:0; line-height:100%; text-decoration:none; -ms-interpolation-mode:bicubic; }
       table { border-collapse:collapse !important; }
       body { margin:0 !important; padding:0 !important; background:#f6f7fb; }
       a { color:#0f172a; }
-      /* Dark mode-safe button text color override for Apple Mail */
-      @media (prefers-color-scheme: dark) {
-        .btn a { color:#ffffff !important; }
+      @media (prefers-color-scheme: dark) { .btn a { color:#ffffff !important; } }
+      @media only screen and (max-width: 600px) {
+        .stack { display:block !important; width:100% !important; }
+        .pad { padding-top:12px !important; }
       }
     </style>
   </head>
   <body style="background:#f6f7fb; margin:0; padding:0;">
-    <!-- Preheader (hidden in most clients) -->
+    <!-- Preheader -->
     <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
-      Important: restart the app once after downloading so the update installs.
+      The SwipSwap beta is now live! iOS users: please restart the app once after download.
     </div>
 
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f6f7fb;">
@@ -27,63 +27,93 @@
         <td align="center" style="padding:24px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px; background:#ffffff; border-radius:12px;">
             <tr>
-              <td style="padding:28px 24px 12px 24px; font-family:Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif; color:#0f172a;">
-                <h1 style="margin:0 0 10px; font-size:24px; line-height:1.3;">SwipSwap beta starts <strong>Monday, September 1</strong> 🎉</h1>
+              <td style="padding:28px 24px 8px 24px; font-family:Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif; color:#0f172a;">
+                <h1 style="margin:0 0 10px; font-size:24px; line-height:1.3;">
+                  The SwipSwap beta <strong>is now live!</strong> 🎉
+                </h1>
                 <p style="margin:0 0 16px; font-size:16px; line-height:1.6;">
-                  Thanks for joining the beta! You can post items and swipe to trade starting Monday.
+                  Thanks for being part of the beta! You can now post items and swipe to find trades.<br>
+                  We’ll be adding more testers throughout the week, so keep checking SwipSwap for additional listings.
                 </p>
 
-                <p style="margin:0 0 12px; font-size:16px; line-height:1.6;"><strong>Important one-time step before you begin:</strong></p>
-                <ol style="margin:0 0 16px 18px; padding:0; font-size:16px; line-height:1.6;">
-                  <li>Download and open SwipSwap once.</li>
-                  <li><strong>Fully close (terminate) the app</strong> by swiping it away from your recent apps. (see animation below)</li>
-                  <li>Reopen SwipSwap.</li>
-                </ol>
-                <p style="margin:0 0 16px; font-size:16px; line-height:1.6;">
-                  Restarting installs an important update. Without this step, you may not see the latest version.
-                </p>
-
-                <!-- Button (bulletproof) -->
-                <table role="presentation" cellpadding="0" cellspacing="0" class="btn" style="margin:0 0 20px;">
+                <!-- Dual buttons -->
+                <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 20px;">
                   <tr>
-                    <td align="left">
+                    <td class="stack" align="left" style="padding-right:8px;">
                       <!--[if mso]>
-                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476" style="height:44px; v-text-anchor:middle; width:260px;" arcsize="12%" fillcolor="#00b67a" strokecolor="#00b67a">
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476?utm_source=email&utm_medium=beta&utm_campaign=launch"
+                        style="height:44px; v-text-anchor:middle; width:280px;" arcsize="12%" fillcolor="#00b67a" strokecolor="#00b67a">
                         <w:anchorlock/>
                         <center style="color:#ffffff; font-family:Segoe UI, Arial, sans-serif; font-size:16px; font-weight:bold;">Download on the App Store</center>
                       </v:roundrect>
                       <![endif]-->
                       <!--[if !mso]><!-- -->
-                      <a href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476"
+                      <a href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476?utm_source=email&utm_medium=beta&utm_campaign=launch"
                          style="background:#00b67a; color:#fff; display:inline-block; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none; font-size:16px;">
                         Download on the App Store
+                      </a>
+                      <!--<![endif]-->
+                    </td>
+                    <td class="stack pad" align="left" style="padding-left:8px;">
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+                        href="https://play.google.com/store/apps/details?id=com.ricky53.SwipSwap&utm_source=email&utm_medium=beta&utm_campaign=launch"
+                        style="height:44px; v-text-anchor:middle; width:260px;" arcsize="12%" fillcolor="#00b67a" strokecolor="#00b67a">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff; font-family:Segoe UI, Arial, sans-serif; font-size:16px; font-weight:bold;">Get it on Google Play</center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!--[if !mso]><!-- -->
+                      <a href="https://play.google.com/store/apps/details?id=com.ricky53.SwipSwap&utm_source=email&utm_medium=beta&utm_campaign=launch"
+                         style="background:#00b67a; color:#fff; display:inline-block; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none; font-size:16px;">
+                        Download on Google Play
                       </a>
                       <!--<![endif]-->
                     </td>
                   </tr>
                 </table>
 
-                <!-- GIF -->
-                <p style="margin:0 0 8px; font-size:14px; color:#475569;">How to fully close the app on iPhone:</p>
+                <!-- iOS section -->
+                <h3 style="margin:10px 0 6px; font-size:18px;">For iPhone users (iOS) 📱</h3>
+                <p style="margin:0 0 8px; font-size:16px; line-height:1.6;">
+                  After download, please do this once to install an important update:
+                </p>
+                <ol style="margin:0 0 14px 18px; padding:0; font-size:16px; line-height:1.6;">
+                  <li>Open SwipSwap once.</li>
+                  <li><strong>Fully close (terminate) the app</strong> by swiping it away from recent apps.</li>
+                  <li>Reopen SwipSwap.</li>
+                </ol>
                 <img src="https://swipswap.app/appleGif.gif"
-                     alt="GIF: On iPhone, swipe up from the bottom, pause to show recent apps, then swipe the SwipSwap card up to fully close it; reopen the app."
+                     alt="How to fully close the app on iPhone: open, show recent apps, swipe SwipSwap up to close, then reopen."
                      width="500"
-                     style="display:block; max-width:100%; height:auto; border-radius:8px; margin:0 0 16px;">
-
-                <!-- Outlook fallback note (first frame matters) -->
+                     style="display:block; max-width:100%; height:auto; border-radius:8px; margin:0 0 10px;">
                 <p style="margin:0 0 16px; font-size:12px; color:#64748b;">
-                  If the animation doesn’t play (Outlook desktop), just follow the first frame: open ➜ swipe away to close ➜ reopen.
+                  If the animation doesn’t play (Outlook desktop), follow the first frame: open ➜ swipe away to close ➜ reopen.
                 </p>
 
+                <!-- Android section -->
+                <h3 style="margin:6px 0 6px; font-size:18px;">For Android users 🤖</h3>
+                <p style="margin:0 0 16px; font-size:16px; line-height:1.6;">
+                  Just download and open the app — <strong>no extra steps required</strong>.
+                </p>
+
+                <!-- Quick how-to bullets -->
+                <ul style="margin:0 0 16px 18px; padding:0; font-size:16px; line-height:1.6;">
+                  <li>Post your first item in under a minute.</li>
+                  <li>Swipe local items to find matches.</li>
+                  <li>Message your matches to coordinate the swap.</li>
+                </ul>
+
                 <p style="margin:0; font-size:14px; line-height:1.6; color:#475569;">
-                  Thanks again for testing — your help means a lot!<br>— Ricky, Founder of SwipSwap
+                  Thanks again for your support and feedback — with your help we can make this app amazing.<br>— Ricky, Founder of SwipSwap
                 </p>
               </td>
             </tr>
           </table>
 
           <p style="font-family:Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Arial, sans-serif; color:#94a3b8; font-size:12px; margin:12px 0 0;">
-            You’re receiving this because you signed up for SwipSwap beta. Unsubscribe anytime.
+            You’re receiving this because you signed up for the SwipSwap beta. Unsubscribe anytime.
           </p>
         </td>
       </tr>
