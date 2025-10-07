@@ -21,6 +21,23 @@
     .btn-primary{background:var(--brand);color:#fff;}
     .btn-secondary{background:#eef2f7;color:var(--ink);}
     footer{padding:40px 0 20px;font-size:.9rem;color:var(--muted);}
+    .store-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.store-buttons img {
+  height: 60px; /* adjust for your image size */
+  width: auto;
+  transition: transform 0.15s ease;
+}
+
+.store-buttons a:hover img {
+  transform: scale(1.03);
+}
   </style>
 </head>
 <body>
@@ -29,13 +46,16 @@
     
     <p>Choose your platform to find the perfect trade partner for your items.</p>
 
-    <div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScLWq-tmQmQMW2idmiyiLAdFyIUXyf4H1v9gh91sCyxo6lpDg/viewform?embedded=true" 
-         class="btn btn-primary">Sign up for Android</a>
+    <div class="store-buttons">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScLWq-tmQmQMW2idmiyiLAdFyIUXyf4H1v9gh91sCyxo6lpDg/viewform?embedded=true" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+          <img src="images/googleplay.svg" alt="Get it on Google Play">
+        </a>
+        <a href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476" aria-label="Download on the App Store" title="Coming soon on the App Store">
+          <img src="images/appstore.svg" alt="Download on the App Store">
+        </a>
+      </div>
 
-      <a href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476" class="btn btn-secondary" 
-         title="Coming soon on the App Store">Download for iOS</a>
-    </div>
+
 
     <p style="margin-top:40px;color:#475569;">
       Questions? Email us at: <a href="mailto:info@swipswap.app">info@swipswap.app</a>
