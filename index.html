@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SwipSwap — The dating app for your stuff</title>
+    <!-- UPDATED TITLE -->
+    <title>SwipSwap — Buy, sell, or trade your stuff with a simple swipe</title>
+    <!-- UPDATED META DESCRIPTION -->
     <meta
       name="description"
-      content="Swipe, match, and trade items with locals. Join the SwipSwap beta for early access and help shape the app."
+      content="SwipSwap is the dating app for your stuff — a swipe-to-shop marketplace where you can buy, sell, or trade items with locals. Turn clutter into cash or something new to you."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,7 +41,7 @@
 
       html {
         scroll-behavior: smooth;
-      } /* CSS smooth scroll */
+      }
       body {
         margin: 0;
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
@@ -189,26 +191,22 @@
 
       .phone {
         position: absolute;
-        aspect-ratio: 9 / 19.5; /* phone shape */
-        width: 230px; /* <- resize here */
-        border-radius: 32px; /* outer body */
-        /* box-shadow: 0 18px  rgba(2,8,23,.18); */
+        aspect-ratio: 9 / 19.5;
+        width: 230px;
+        border-radius: 32px;
       }
 
-      /* “Screen” area inset inside the phone body */
       .phone .screen {
         position: absolute;
-        inset: 10px; /* bezel thickness */
-        border-radius: 24px; /* inner rounded corners */
-        overflow: hidden; /* clip image to rounded screen */
+        inset: 10px;
+        border-radius: 24px;
+        overflow: hidden;
       }
 
       .phone .screen img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* show the full screenshot */
-        /* If your screenshots already include a bezel, you can try:
-     object-fit: cover; and remove the bezel/background above. */
+        object-fit: contain;
       }
 
       .phone.main {
@@ -227,13 +225,13 @@
       @media (max-width: 400px) {
         .phones {
           position: relative;
-          min-height: 420px; /* room for the overlap */
+          min-height: 420px;
         }
         .phone {
           width: min(240px, 70vw);
           position: absolute;
           left: 45%;
-          transform: translateX(-50%); /* center horizontally */
+          transform: translateX(-50%);
         }
         .phone.bg {
           display: block;
@@ -245,7 +243,6 @@
         }
         .phone.main {
           top: -20;
-          /* right: -100px; */
           transform: translateX(-15%) rotate(6deg);
           z-index: 1;
         }
@@ -397,7 +394,9 @@
     <header class="nav">
       <a class="logo" href="/" aria-label="SwipSwap — Home">
         <img class="logo-mark" src="images/icon.svg" alt="SwipSwap" />
-        <!-- <span class="ghost">• Find the perfect trade</span> -->
+        <!-- Optional tiny tagline:
+        <span class="ghost">• Buy, sell, or trade with a swipe</span>
+        -->
       </a>
       <div class="social-bar">
         <a
@@ -429,14 +428,36 @@
     <section class="hero">
       <div class="container grid">
         <div>
-          <h1>The dating app,<br />for your stuff.</h1>
+          <h1>
+            The dating app,<br />
+            for your stuff.
+          </h1>
+
+          <!-- UPDATED SUBCOPY -->
+          <div
+            style="
+              display: inline-flex;
+              align-items: center;
+              padding: 4px 10px;
+              border-radius: 999px;
+              background: #e0f2fe;
+              color: #0f172a;
+              font-size: 0.8rem;
+              margin-bottom: 10px;
+            "
+          >
+            Tired of endless “Hi, is this still available?” messages?
+          </div>
+
           <p class="sub">
-            Swipe, match, and trade items with people nearby. Turn the things
-            you don’t want into the things you do — fast.
+            SwipSwap is a swipe-based marketplace where you can
+            <strong>buy, sell, or trade</strong> with people nearby — without
+            the unnecessary communication.
           </p>
+
           <div class="benefit">
-            Be one of the first to try SwipSwap and help shape it with your
-            feedback.
+            Turn the things you don’t want into cash or something new to you
+            with a simple swipe.
           </div>
           <div class="cta-row">
             <a href="download.html" class="btn btn-primary">Download the app</a>
@@ -477,18 +498,20 @@
     <!-- SOCIAL PROOF -->
     <div class="proof">
       <div class="chip">
+        <!-- UPDATED CHIP COPY -->
         <strong>
           <a style="color: #0a0f1a" href="download.html">
-            Find the perfect trade partner for your stuff</a
+            Find buyers, sellers, and trade partners for your stuff near you</a
           >
         </strong>
-        - Now available!
+        <!-- - Now available! -->
       </div>
     </div>
+
     <!-- HOW IT WORKS -->
     <section id="how">
       <div class="how-wrap">
-        <h2 class="how-title">How it works</h2>
+        <h2 class="how-title">How SwipSwap works</h2>
         <div class="how-grid">
           <div class="how-card">
             <svg
@@ -501,8 +524,9 @@
                 d="M3 5h18v14H3zM5 7v10h14V7H5zm4 2h6v2H9V9zm0 4h6v2H9v-2z"
               />
             </svg>
-            <h3>Browse nearby items</h3>
-            <p>See what people around you want to trade right now.</p>
+            <!-- UPDATED -->
+            <h3>Browse nearby listings</h3>
+            <p>See what people around you are looking to sell or trade.</p>
           </div>
           <div class="how-card">
             <svg
@@ -513,10 +537,11 @@
             >
               <path d="M7 12l-4-4 1.4-1.4L7 9.2l12.6-12.6L21 0 7 14z" />
             </svg>
-            <h3>Swipe to propose a trade</h3>
+            <!-- UPDATED -->
+            <h3>Swipe to buy or trade</h3>
             <p>
-              See something you like? Select an item to offer as a trade, and
-              swipe right.
+              Swipe right on something you like and send an offer - cash, an
+              item, or cash + an item.
             </p>
           </div>
           <div class="how-card">
@@ -530,9 +555,11 @@
                 d="M12 12c2.8 0 5-2.2 5-5S14.8 2 12 2 7 4.2 7 7s2.2 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"
               />
             </svg>
-            <h3>Match & chat</h3>
+            <!-- UPDATED -->
+            <h3>Match &amp; chat</h3>
             <p>
-              If they’re into it, you’ll match and can coordinate in the app.
+              If your offer gets accepted, congratulations! You can now message
+              each other to set up your exchange.
             </p>
           </div>
           <div class="how-card">
@@ -546,8 +573,9 @@
                 d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4zm0 2.2L5 6.7v5.3c0 4.1 3 7.8 7 8.2 4-.4 7-4.1 7-8.2V6.7l-7-2.5z"
               />
             </svg>
-            <h3>Trade safely</h3>
-            <p>Meet in public spots. Bring a friend. Trust your gut.</p>
+            <!-- UPDATED -->
+            <h3>Deal safely</h3>
+            <p>Meet in public spots, bring a friend, and trust your gut.</p>
           </div>
         </div>
       </div>
@@ -574,7 +602,7 @@
       // Current year
       document.getElementById("y").textContent = new Date().getFullYear();
 
-      // JS smooth-scroll fallback for older browsers + offset control (optional)
+      // JS smooth-scroll fallback
       document.querySelectorAll('a[href^="#"]').forEach((a) => {
         a.addEventListener("click", (e) => {
           const id = a.getAttribute("href");
