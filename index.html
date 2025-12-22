@@ -241,12 +241,14 @@
       .phones {
         position: relative;
         min-height: 420px;
+        isolation: isolate;
       }
       .phone {
         position: absolute;
         aspect-ratio: 9 / 19.5;
         width: 230px;
         border-radius: 32px;
+        z-index: 0;
       }
       .phone .screen {
         position: absolute;
@@ -262,7 +264,7 @@
       .phone.main {
         right: 60px;
         top: -60px;
-        z-index: 1;
+        z-index: 3;
         transform: rotate(8deg);
       }
       .phone.bg {
@@ -294,7 +296,7 @@
         .phone.main {
           top: -20px;
           transform: translateX(-15%) rotate(6deg);
-          z-index: 1;
+          z-index: 3;
         }
       }
 
