@@ -237,68 +237,35 @@
         }
       }
 
-      /* Phones */
+      /* Phones (single combined image) */
       .phones {
-        position: relative;
-        min-height: 420px;
-        isolation: isolate;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      .phone {
-        position: absolute;
-        aspect-ratio: 9 / 19.5;
-        width: 230px;
-        border-radius: 32px;
-        z-index: 0;
-      }
-      .phone .screen {
-        position: absolute;
-        inset: 10px;
-        border-radius: 24px;
-        overflow: hidden;
-      }
-      .phone .screen img {
+
+      .hero-phone {
         width: 100%;
-        height: 100%;
-        object-fit: contain;
+        max-width: 520px; /* controls how big it gets on desktop */
+        height: auto;
       }
-      .phone.main {
-        right: 60px;
-        top: -60px;
-        z-index: 3;
-        transform: rotate(8deg);
+
+      /* Make it really pop on large screens */
+      @media (min-width: 1100px) {
+        .hero-phone {
+          max-width: 600px;
+        }
       }
-      .phone.bg {
-        left: 50px;
-        top: -40px;
-        z-index: 2;
-        transform: rotate(-14deg);
-        opacity: 1;
+
+      /* Mobile: keep it big but not overwhelming */
+      @media (max-width: 980px) {
+        .hero-phone {
+          max-width: 90vw;
+          margin-top: 24px;
+        }
       }
+
       @media (max-width: 400px) {
-        .phones {
-          position: relative;
-          min-height: 420px;
-        }
-        .phone {
-          width: min(240px, 70vw);
-          position: absolute;
-          left: 45%;
-          transform: translateX(-50%);
-        }
-        .phone.bg {
-          display: block;
-          top: -20px;
-          left: 30%;
-          /* transform: translateX(-45%) rotate(-8deg); */
-          transform: translateX(-45%);
-          z-index: 2;
-          opacity: 1;
-        }
-        .phone.main {
-          top: -20px;
-          transform: translateX(-15%) rotate(6deg);
-          z-index: 3;
-        }
         .proof {
           margin-top: 45px;
         }
@@ -503,31 +470,15 @@
         </div>
 
         <div class="phones" aria-hidden="true">
-          <div class="phone main">
-            <div class="screen">
-              <picture>
-                <source srcset="images/screenshot2.webp" type="image/webp" />
-                <img
-                  src="images/screenshot2.png"
-                  alt="SwipSwap trade screen"
-                  loading="eager"
-                />
-              </picture>
-            </div>
-          </div>
-
-          <div class="phone bg">
-            <div class="screen">
-              <picture>
-                <source srcset="images/screenshot1.webp" type="image/webp" />
-                <img
-                  src="images/screenshot1.png"
-                  alt="SwipSwap listing screen"
-                  loading="lazy"
-                />
-              </picture>
-            </div>
-          </div>
+          <picture>
+            <source srcset="images/combined.webp" type="image/webp" />
+            <img
+              src="images/combined.png"
+              alt="SwipSwap app screens"
+              class="hero-phone"
+              loading="lazy"
+            />
+          </picture>
         </div>
       </div>
     </section>
