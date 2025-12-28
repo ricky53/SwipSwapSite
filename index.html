@@ -244,22 +244,28 @@
         align-items: center;
       }
 
-      .hero-phone {
-        width: 100%;
-        max-width: 520px; /* controls how big it gets on desktop */
+      .hero-video {
+        width: 60%;
+        max-width: 520px;
         height: auto;
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        object-fit: cover;
       }
 
-      /* Make it really pop on large screens */
+      .hero-video::after {
+        content: "Swipe to browse";
+      }
+      /* Larger screens */
       @media (min-width: 1100px) {
-        .hero-phone {
+        .hero-video {
           max-width: 600px;
         }
       }
 
-      /* Mobile: keep it big but not overwhelming */
+      /* Mobile tweaks */
       @media (max-width: 1180px) {
-        .hero-phone {
+        .hero-video {
           max-width: 98vw;
           margin-top: 24px;
         }
@@ -469,7 +475,7 @@
           </div>
         </div>
 
-        <div class="phones" aria-hidden="true">
+        <!-- <div class="phones" aria-hidden="true">
           <picture>
             <source srcset="images/combined.webp" type="image/webp" />
             <img
@@ -479,6 +485,18 @@
               loading="lazy"
             />
           </picture>
+        </div> -->
+        <div class="phones" aria-hidden="true">
+          <video
+            class="hero-video"
+            src="videos/demo.mp4"
+            poster="images/combined.png"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
         </div>
       </div>
     </section>
