@@ -449,12 +449,14 @@
           <div class="device">
             <video
               class="hero-video"
-              src="../videos/demo.mp4"
+              src="/videos/demo.mp4"
               autoplay
               muted
               loop
               playsinline
-              preload="metadata"
+              webkit-playsinline
+              type="video/mp4"
+              preload="auto"
             ></video>
           </div>
         </div>
@@ -473,7 +475,7 @@
                 aria-label="Download on the App Store"
               >
                 <img
-                  src="../images/appstore.svg"
+                  src="/images/appstore.svg"
                   alt="Download on the App Store"
                 />
               </a>
@@ -482,10 +484,7 @@
                 href="https://play.google.com/store/apps/details?id=com.ricky53.SwipSwap"
                 aria-label="Get it on Google Play"
               >
-                <img
-                  src="../images/googleplay.svg"
-                  alt="Get it on Google Play"
-                />
+                <img src="/images/googleplay.svg" alt="Get it on Google Play" />
               </a>
             </div>
           </div>
@@ -493,7 +492,7 @@
           <div class="qr-desktop">
             <p class="qr-label">On a computer? Scan to download</p>
             <img
-              src="../images/downloadQR.png"
+              src="/images/downloadQR.png"
               alt="Scan to download SwipSwap"
               class="qr-image"
             />
