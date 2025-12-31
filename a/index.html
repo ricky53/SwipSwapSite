@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
 
     <style>
       :root {
@@ -368,27 +368,34 @@
         font-size: 0.85rem;
       }
     </style>
+
+    <script>
+      // Make lp_variant available BEFORE GA initializes
+      window.__lp_variant = localStorage.getItem("ss_ab_lp_v1") || "unknown";
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-P1VRQXVXYS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+
+      // Set user_properties during config so early events inherit it
+      gtag("config", "G-P1VRQXVXYS", {
+        user_properties: { lp_variant: window.__lp_variant },
+      });
+
+      // Optional: explicit assignment event (now it will have the property too)
+      gtag("event", "lp_variant_assigned", { lp_variant: window.__lp_variant });
+    </script>
   </head>
-
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-P1VRQXVXYS"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-P1VRQXVXYS");
-
-    (function () {
-      var variant = localStorage.getItem("ss_ab_lp_v1") || "unknown";
-      gtag("set", "user_properties", { lp_variant: variant });
-      gtag("event", "lp_variant_assigned", { lp_variant: variant });
-    })();
-  </script>
 
   <body>
     <header class="nav">
@@ -607,24 +614,22 @@
       (function () {
         var variant = localStorage.getItem("ss_ab_lp_v1") || "unknown";
 
-        // App Store click
-        var appStore = document.querySelector('a[href*="apps.apple.com"]');
-        if (appStore) {
-          appStore.addEventListener("click", function () {
-            gtag("event", "store_click", { store: "ios", lp_variant: variant });
-          });
+        function track(store) {
+          if (typeof gtag !== "function") return;
+          gtag("event", "store_click", { store: store, lp_variant: variant });
         }
 
-        // Google Play click
-        var playStore = document.querySelector('a[href*="play.google.com"]');
-        if (playStore) {
-          playStore.addEventListener("click", function () {
-            gtag("event", "store_click", {
-              store: "android",
-              lp_variant: variant,
-            });
+        var appStore = document.querySelector('a[href*="apps.apple.com"]');
+        if (appStore)
+          appStore.addEventListener("click", function () {
+            track("ios");
           });
-        }
+
+        var playStore = document.querySelector('a[href*="play.google.com"]');
+        if (playStore)
+          playStore.addEventListener("click", function () {
+            track("android");
+          });
       })();
     </script>
     <script>
