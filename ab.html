@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SwipSwap</title>
+    <script>
+      (function () {
+        var KEY = "ss_ab_lp_v1"; // bump this if you start a new test
+        var variant = localStorage.getItem(KEY);
+
+        if (!variant) {
+          variant = Math.random() < 0.5 ? "a" : "b";
+          localStorage.setItem(KEY, variant);
+        }
+
+        // keep UTMs / query params
+        var qs = location.search || "";
+        location.replace("/" + variant + "/" + qs);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
