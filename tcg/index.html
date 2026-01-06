@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SwipSwap — Your trade binder in your pocket</title>
+    <meta
+      name="description"
+      content="SwipSwap is a swipe-first marketplace to buy, sell, or trade locally. Send an offer and only message if it’s accepted."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+
+    <style>
+      :root {
+        --bg: #ffffff;
+        --ink: #0f172a;
+        --muted: #475569;
+
+        --brand: #00b67a;
+
+        --sky: #dbeafe;
+        --sky-2: #eaf3ff;
+
+        --border: #e2e8f0;
+
+        --shadow-soft: 0 10px 30px rgba(2, 8, 23, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        max-width: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      /* NAV */
+      .nav {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+
+      .social-bar {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .social-bar a {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink);
+      }
+      .social-bar svg {
+        width: 20px;
+        height: 20px;
+        opacity: 0.9;
+        transition: opacity 0.2s ease;
+      }
+      .social-bar a:hover svg {
+        opacity: 0.65;
+      }
+
+      /* HERO */
+      .hero {
+        padding: 28px 24px 10px;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      /* Desktop grid: copy (left), video (right), download (left under copy) */
+      .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        column-gap: 48px;
+        row-gap: 8px;
+        align-items: start;
+      }
+
+      .hero-copy {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .phones {
+        grid-column: 2;
+        grid-row: 1 / span 3; /* spans down next to download+qr */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 6px;
+      }
+
+      .hero-download {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      @media (max-width: 980px) {
+        /* Mobile: headline+chip+sub -> video -> download */
+        .grid {
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          text-align: center;
+          align-items: center;
+        }
+
+        .hero-copy {
+          order: 1;
+        }
+        .phones {
+          order: 2;
+          margin-top: 6px;
+        }
+        .hero-download {
+          order: 3;
+          margin-top: 2px;
+        }
+      }
+
+      h1 {
+        /* font-size: clamp(2.1rem, 1.5rem + 2.2vw, 3.1rem); */
+        line-height: 1.08;
+        margin: 0 0 12px;
+        letter-spacing: -0.03em;
+        font-weight: 800;
+      }
+
+      .hero-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: var(--sky);
+        color: #0f172a;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin: 4px 0 14px;
+      }
+
+      .sub {
+        color: var(--muted);
+        border-radius: 2px;
+        font-size: 1rem;
+        margin: 0 0 8px;
+        max-width: 62ch;
+      }
+
+      @media (max-width: 980px) {
+        .sub {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      /* Download card */
+      .download-card {
+        background: var(--sky-2);
+        border-radius: 16px;
+        padding: 14px 16px;
+        display: inline-block;
+        text-align: center;
+        /* margin-top: 6px; */
+      }
+
+      .download-card p {
+        margin: 0 0 10px;
+        color: var(--ink);
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+      .download-card p strong {
+        font-weight: 800;
+      }
+
+      .store-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 0;
+      }
+      .store-buttons img {
+        height: 54px;
+        width: auto;
+        transition: transform 0.15s ease;
+      }
+      .store-buttons a:hover img {
+        transform: scale(1.03);
+      }
+
+      /* QR desktop only (now under download card) */
+      .qr-desktop {
+        margin-top: 14px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .qr-label {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 0;
+      }
+      .qr-image {
+        width: 150px;
+        height: auto;
+        border-radius: 10px;
+      }
+      @media (min-width: 768px) {
+        .qr-desktop {
+          display: flex;
+        }
+      }
+      @media (max-width: 980px) {
+        .qr-desktop {
+          align-items: center;
+        }
+      }
+
+      /* Device */
+      .device {
+        width: min(360px, 92%);
+        border-radius: 28px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .hero-video {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* PROOF STRIP */
+      .proof {
+        padding: 18px 24px 4px;
+      }
+      .proof .chip {
+        max-width: 920px;
+        margin: 0 auto;
+        background: var(--sky);
+        border-radius: 999px;
+        padding: 12px 18px;
+        text-align: center;
+        font-size: 0.95rem;
+        color: var(--ink);
+      }
+      .proof .chip a {
+        text-decoration: none;
+      }
+      .proof .chip a:hover {
+        text-decoration: underline;
+      }
+
+      /* HOW IT WORKS */
+      #how {
+        padding: 44px 24px 8px;
+      }
+      .how-wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .how-title {
+        font-size: 1.45rem;
+        margin: 0 0 18px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .how-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        text-align: left;
+      }
+      @media (max-width: 980px) {
+        .how-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 540px) {
+        .how-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .how-card {
+        background: #fbfdff;
+        border: 1px solid #edf2f7;
+        border-radius: 14px;
+        padding: 16px 16px 14px;
+        box-shadow: 0 8px 22px rgba(2, 8, 23, 0.06);
+      }
+      .how-icon {
+        width: 22px;
+        height: 22px;
+        color: var(--brand);
+        margin-bottom: 10px;
+      }
+      .how-card h3 {
+        margin: 0 0 6px;
+        font-size: 0.98rem;
+        font-weight: 800;
+      }
+      .how-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .questions {
+        margin: 16px 0 0;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 18px 24px 56px;
+        color: var(--muted);
+        text-align: center;
+        font-size: 0.85rem;
+      }
+    </style>
+
+    <script>
+      // Make lp_variant available BEFORE GA initializes
+      window.__lp_variant = localStorage.getItem("ss_ab_lp_v1") || "unknown";
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-P1VRQXVXYS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+
+      // Set user_properties during config so early events inherit it
+      gtag("config", "G-P1VRQXVXYS", {
+        user_properties: { lp_variant: window.__lp_variant },
+      });
+
+      // Optional: explicit assignment event (now it will have the property too)
+      gtag("event", "lp_variant_assigned", { lp_variant: window.__lp_variant });
+    </script>
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="/" aria-label="SwipSwap — Home">SwipSwap</a>
+
+      <div class="social-bar">
+        <a
+          href="https://www.facebook.com/profile.php?id=61580174102703"
+          target="_blank"
+          aria-label="Facebook"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0 0 22 12z"
+            />
+          </svg>
+        </a>
+
+        <a
+          href="https://www.instagram.com/swipswapapp"
+          target="_blank"
+          aria-label="Instagram"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.4 3 3v10c0 1.6-1.4 3-3 3H7c-1.6 0-1.4-3-3-3V7c0-1.6 1.4-3 3-3h10zm-5 3.2A5.8 5.8 0 0 0 6.2 12 5.8 5.8 0 0 0 12 17.8 5.8 5.8 0 0 0 17.8 12 5.8 5.8 0 0 0 12 7.2zm0 2A3.8 3.8 0 0 1 15.8 12 3.8 3.8 0 0 1 12 15.8 3.8 3.8 0 0 1 8.2 12 3.8 3.8 0 0 1 12 9.2zm4.5-2.8a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z"
+            />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="container grid">
+        <!-- 1) Headline + chip + sub -->
+        <div class="hero-copy">
+          <h1>
+            Your trade binder<br />
+            in your pocket.
+          </h1>
+
+          <div class="hero-chip">
+            Find the card you've been hunting for simply by swiping.
+          </div>
+
+          <p class="sub">
+            Browse through items nearby and swipe to send offers of cash, an
+            item to trade, or a combination of both —
+            <strong>message only if the offer is accepted.</strong>
+          </p>
+        </div>
+
+        <!-- 2) Video -->
+        <div class="phones" aria-hidden="true">
+          <div class="device">
+            <video
+              class="hero-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              webkit-playsinline
+              preload="metadata"
+            >
+              <source src="/videos/demo_tcg.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <!-- 3) Download + QR (QR now BELOW download card) -->
+        <div class="hero-download" id="download">
+          <div class="download-card" aria-label="Download links">
+            <p>
+              Join hundreds of others who are<br />
+              swiping to find nearby deals. It’s <strong>Free!</strong>
+            </p>
+
+            <div class="store-buttons">
+              <a
+                href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476"
+                aria-label="Download on the App Store"
+              >
+                <img
+                  src="/images/appstore.svg"
+                  alt="Download on the App Store"
+                />
+              </a>
+
+              <a
+                href="https://play.google.com/store/apps/details?id=com.ricky53.SwipSwap"
+                aria-label="Get it on Google Play"
+              >
+                <img src="/images/googleplay.svg" alt="Get it on Google Play" />
+              </a>
+            </div>
+          </div>
+
+          <div class="qr-desktop">
+            <p class="qr-label">On a computer? Scan to download</p>
+            <img
+              src="/images/downloadQR.png"
+              alt="Scan to download SwipSwap"
+              class="qr-image"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="proof">
+      <div class="chip">
+        Buying and selling doesn’t get any simpler than swiping left or right.
+        <strong>Download to try it yourself!</strong>
+      </div>
+    </div>
+
+    <section id="how">
+      <div class="how-wrap">
+        <h2 class="how-title">How SwipSwap works</h2>
+
+        <div class="how-grid">
+          <div class="how-card">
+            <svg
+              class="how-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 5h18v14H3zM5 7v10h14V7H5zm4 2h6v2H9V9zm0 4h6v2H9v-2z"
+              />
+            </svg>
+            <h3>Browse nearby listings</h3>
+            <p>
+              Swipe through cards around you — even if you’re not looking for
+              anything specific.
+            </p>
+          </div>
+
+          <div class="how-card">
+            <svg
+              class="how-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z" />
+            </svg>
+            <h3>Swipe &amp; send an offer</h3>
+            <p>
+              Swipe right on something you like and send an offer — cash, an
+              item, or cash + an item.
+            </p>
+          </div>
+
+          <div class="how-card">
+            <svg
+              class="how-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 12c2.8 0 5-2.2 5-5S14.8 2 12 2 7 4.2 7 7s2.2 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"
+              />
+            </svg>
+            <h3>Match &amp; chat</h3>
+            <p>
+              If your offer gets accepted, congratulations! You can now message
+              each other to set up your exchange.
+            </p>
+          </div>
+
+          <div class="how-card">
+            <svg
+              class="how-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4zm0 2.2L5 6.7v5.3c0 4.1 3 7.8 7 8.2 4-.4 7-4.1 7-8.2V6.7l-7-2.5z"
+              />
+            </svg>
+            <h3>Deal safely</h3>
+            <p>Meet in public spots, bring a friend, and trust your gut.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="questions">
+      Questions? Email us at
+      <a href="mailto:info@swipswap.app">info@swipswap.app</a>
+    </p>
+
+    <footer>
+      <div><strong>SwipSwap</strong> — Built in Charlotte.</div>
+      <div>© <span id="y"></span> SwipSwap. All rights reserved.</div>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href");
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+      (function () {
+        var variant = localStorage.getItem("ss_ab_lp_v1") || "unknown";
+
+        function track(store) {
+          if (typeof gtag !== "function") return;
+          gtag("event", "store_click", {
+            store: store,
+            lp_variant: variant,
+            transport_type: "beacon",
+          });
+        }
+
+        var appStore = document.querySelector('a[href*="apps.apple.com"]');
+        if (appStore)
+          appStore.addEventListener("click", function () {
+            track("ios");
+          });
+
+        var playStore = document.querySelector('a[href*="play.google.com"]');
+        if (playStore)
+          playStore.addEventListener("click", function () {
+            track("android");
+          });
+      })();
+    </script>
+    <script>
+      (function () {
+        const v = document.querySelector(".hero-video");
+        if (!v) return;
+
+        // iOS wants these as properties too, not only attributes
+        v.muted = true;
+        v.playsInline = true;
+        v.setAttribute("muted", ""); // some iOS builds are picky
+        v.setAttribute("playsinline", "");
+        v.setAttribute("webkit-playsinline", "");
+
+        const tryPlay = async () => {
+          try {
+            await v.play();
+          } catch (e) {
+            // Autoplay still blocked (Low Power Mode, Data Saver, etc.)
+            // Optional: show a tap-to-play overlay here.
+          }
+        };
+
+        // Try immediately + after a couple beats (iOS sometimes delays readiness)
+        tryPlay();
+        setTimeout(tryPlay, 200);
+        setTimeout(tryPlay, 800);
+
+        // If user touches anywhere, try again (counts as a user gesture)
+        const onFirstTouch = () => {
+          tryPlay();
+          window.removeEventListener("touchstart", onFirstTouch);
+          window.removeEventListener("click", onFirstTouch);
+        };
+        window.addEventListener("touchstart", onFirstTouch, { passive: true });
+        window.addEventListener("click", onFirstTouch);
+      })();
+    </script>
+  </body>
+</html>
