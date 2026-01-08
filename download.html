@@ -8,10 +8,12 @@
       name="description"
       content="Download the SwipSwap beta for Android or iOS and start trading locally."
     />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         --bg: #fff;
@@ -47,34 +49,6 @@
         color: var(--muted);
         margin-bottom: 40px;
       }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 22px;
-        margin: 8px;
-        border-radius: 12px;
-        font-weight: 700;
-        text-decoration: none;
-        box-shadow: var(--shadow);
-        transition: transform 0.15s ease;
-      }
-      .btn:hover {
-        transform: translateY(-1px);
-      }
-      .btn-primary {
-        background: var(--brand);
-        color: #fff;
-      }
-      .btn-secondary {
-        background: #eef2f7;
-        color: var(--ink);
-      }
-      footer {
-        padding: 40px 0 20px;
-        font-size: 0.9rem;
-        color: var(--muted);
-      }
       .store-buttons {
         display: flex;
         justify-content: center;
@@ -82,17 +56,16 @@
         flex-wrap: wrap;
         margin-bottom: 40px;
       }
-
       .store-buttons img {
-        height: 60px; /* adjust for your image size */
+        height: 60px;
         width: auto;
         transition: transform 0.15s ease;
       }
-
       .store-buttons a:hover img {
         transform: scale(1.03);
       }
-      /* QR code – desktop only */
+
+      /* QR (desktop only) */
       .qr-desktop {
         margin-top: 24px;
         display: none;
@@ -100,59 +73,54 @@
         align-items: center;
         gap: 10px;
       }
-
       .qr-label {
         font-size: 0.9rem;
         color: var(--muted);
       }
-
       .qr-image {
         width: 140px;
         height: auto;
         border-radius: 12px;
         box-shadow: var(--shadow);
       }
-
-      /* Show QR only on larger screens */
       @media (min-width: 768px) {
         .qr-desktop {
           display: flex;
         }
       }
     </style>
-  </head>
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-P1VRQXVXYS"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
 
-    gtag("config", "G-P1VRQXVXYS");
-  </script>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-P1VRQXVXYS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-P1VRQXVXYS");
+    </script>
+  </head>
+
   <body>
     <main>
       <h1>Get SwipSwap</h1>
-
       <p>Choose your platform to download and start swiping.</p>
 
       <div class="store-buttons">
         <a
           href="https://play.google.com/store/apps/details?id=com.ricky53.SwipSwap"
-          title="Get it on Google Play"
           aria-label="Get it on Google Play"
         >
           <img src="images/googleplay.svg" alt="Get it on Google Play" />
         </a>
+
         <a
           href="https://apps.apple.com/us/app/swipswap-marketplace/id6751117476"
           aria-label="Download on the App Store"
-          title="Get it on the App Store"
         >
           <img src="images/appstore.svg" alt="Download on the App Store" />
         </a>
@@ -167,8 +135,8 @@
         />
       </div>
 
-      <p style="margin-top: 40px; color: #475569">
-        Questions? Email us at:
+      <p style="margin-top: 40px">
+        Questions? Email
         <a href="mailto:info@swipswap.app">info@swipswap.app</a>
       </p>
     </main>
@@ -181,6 +149,8 @@
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
     </script>
+
+    <!-- QR + Redirect Tracking -->
     <script>
       (function () {
         const androidUrl =
@@ -188,16 +158,33 @@
         const iosUrl =
           "https://apps.apple.com/us/app/swipswap-marketplace/id6751117476";
 
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
+        const params = new URLSearchParams(window.location.search);
 
-        // Only auto-redirect on mobile
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
         const isAndroid = /android/i.test(ua);
         const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        const platform = isAndroid ? "android" : isIOS ? "ios" : "desktop";
 
+        const isQr =
+          params.get("src") === "qr" || params.get("utm_source") === "qr";
+
+        // Track QR scan
+        if (isQr) {
+          gtag("event", "qr_scan", { platform });
+        }
+
+        // Auto redirect mobile users
         if (isAndroid || isIOS) {
-          // Small delay so analytics + page load still register
+          const target = isAndroid ? androidUrl : iosUrl;
+
+          gtag("event", "store_redirect", {
+            platform,
+            destination: isAndroid ? "play_store" : "app_store",
+            source: isQr ? "qr" : "web",
+          });
+
           setTimeout(() => {
-            window.location.href = isAndroid ? androidUrl : iosUrl;
+            window.location.href = target;
           }, 800);
         }
       })();
